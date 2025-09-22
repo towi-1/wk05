@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #d6d6d6;
+  color: #000;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 16px 80px;
+}
+
+/* Title styling */
+h1 {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+
+/* Framed image block */
+.frame {
+  width: fit-content;
+  margin: 34px auto;                 
+  border: 12px solid #1a00ff;   
+  background: transparent;
+}
+
+/* Inner gray border on image */
+.frame img {
+  display: block;
+  width: 320px;
+  height: auto;
+  border: 18px solid #7d7d7d;
+}
