@@ -1,0 +1,125 @@
+/* --- Base (Mobile First) --- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px; /* ADDED: Initial gap for all views */
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 90%;
+}
+
+/* ---------------------------------------------------------------- */
+/* Tablet View (≥768px) */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 45% 45%;
+    justify-items: center;
+    /* gap: 20px; is inherited from base */
+  }
+
+  .grid > :nth-child(3n) {
+    grid-column: 1 / -1;
+    width: 50%;
+    justify-self: center;
+  }
+
+  .grid > :nth-child(even) {
+    background-color: rgb(191, 220, 245);
+  }
+
+  .gallery {
+    justify-content: space-around;
+  }
+
+  .gallery img {
+    flex: 1 1 30%;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Desktop View (≥1200px) */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px; /* Part 3.3: Increased gap */
+    justify-items: initial;
+  }
+
+  .grid > :nth-child(3n) {
+    grid-column: initial;
+    width: initial;
+    justify-self: initial;
+  }
+
+  .grid > div:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery {
+    justify-content: space-between;
+  }
+
+  .gallery img {
+    flex: 1 1 200px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Print View */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .gallery {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid > div {
+    border: 1px solid black;
+    page-break-inside: avoid;
+  }
+
+  .grid > :nth-child(even) {
+    background-color: initial;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* User Preferences: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .grid > div:hover {
+    box-shadow: none;
+  }
+}
+
+/* User Preferences: Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #eee;
+  }
+
+  .grid > div {
+    background-color: #111;
+    border: 1px solid #EB5B00;
+  }
+
+  .grid > :nth-child(even) {
+    background-color: initial;
+  }
+}
